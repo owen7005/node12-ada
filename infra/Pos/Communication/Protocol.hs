@@ -172,7 +172,11 @@ makeSendActions
        , MonadThrow m
        )
     => VerInfo
-    -> (forall t . Msg -> (NodeId -> VerInfo -> N.Conversation PackingType m t) -> m (Map NodeId (STM.TVar (OQ.PacketStatus t))))
+    -> (forall t .
+           Msg
+        -> (NodeId -> VerInfo -> N.Conversation PackingType m t)
+        -> m (Map NodeId (STM.TVar (OQ.PacketStatus t)))
+       )
     -> Converse PackingType PeerData m
     -> SendActions m
 makeSendActions ourVerInfo enqueue converse = SendActions
